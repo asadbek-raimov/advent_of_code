@@ -21,5 +21,27 @@ def solution()-> int:
                     break
         return fresh
      
-       
-print(solution())
+def solution2() -> int:
+     with open("./day_5/input.txt") as file:
+        ranges = list()
+        next_line = ""
+        while next_line != "\n":
+            next_line = file.readline()
+            if next_line.strip():
+                st, en = next_line.strip().split("-")
+                ranges.append((int(st), int(en)))
+        
+        ranges.sort()
+        fresh = 0
+        current = -1
+        for (start, end) in ranges:
+                if current >= start:
+                    start = current + 1
+                if start <= end:
+                    fresh += end - start + 1
+                current = max(current, end)
+                    
+        
+        return fresh
+
+print(solution2())
