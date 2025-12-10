@@ -72,7 +72,7 @@ def min_presses_joltage_lp(target, A):
         raise RuntimeError("No optimal solution found for machine")
 
     # Sum the presses
-    presses = sum(int(v.value()) for v in x_vars)
+    presses = sum(int(v.value()) for v in x_vars) # type: ignore
     return presses
 
 
@@ -83,7 +83,7 @@ def solve_part2(filename="./day_10/input.txt"):
             line = line.strip()
             if not line:
                 continue
-            target, A = parse_machine_part2(line)
+            target, A = parse_machine_part2(line) # type: ignore
             presses = min_presses_joltage_lp(target, A)
             total += presses
     print("Part 2: total minimal button presses:", total)
